@@ -11,6 +11,6 @@ Rudolf von Treppenwitz -- 423457 views
 Anonymous Contributor -- 170098 views
 Markoff Chaney -- 84557 views
 
-Error Analysis
+Days with more than 1% request errors
 
-2016-07-17 -- 2.26
+2016-07-17 -- 2.26%
