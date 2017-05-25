@@ -1,5 +1,6 @@
+#!/usr/bin python2.7
 # Author Kurt Anderson
-# Last Edited 5/21/2017
+# Last Edited 5/25/2017
 
 import psycopg2
 
@@ -12,20 +13,25 @@ def main():
     # Runs the Most Popular Articles Query
     print("\nMost Popular Articles\n")
     popular_articles = popular_articles_log()
-    for x in range(0,len(popular_articles)):
-        print(popular_articles[x][0] + " -- " + str(popular_articles[x][1]) + " views")
-
+    for x in range(0, len(popular_articles)):
+        print(popular_articles[x][0] +
+              " -- " +
+              str(popular_articles[x][1]) +
+              " views")
     # Runs the Most Popular Authors Query
     print("\nMost Popular Authors\n")
     popular_authors = popular_authors_log()
-    for y in range(0,len(popular_authors)):
-        print(popular_authors[y][0] + " -- " + str(popular_authors[y][1]) + " views")
+    for y in range(0, len(popular_authors)):
+        print(popular_authors[y][0] +
+              " -- " +
+              str(popular_authors[y][1]) +
+              " views")
 
     # Runs the Error Analysis
-    print("\nError Analysis\n")
+    print("\nDays with more than 1% request errors\n")
     errors = error_analysis()
-    for z in range(0,len(errors)):
-        print(str(errors[z][0]) + " -- " + str(errors[z][1]))
+    for z in range(0, len(errors)):
+        print(str(errors[z][0]) + " -- " + str(errors[z][1]) + "%")
     print("\n")
 
 
@@ -57,7 +63,7 @@ def popular_authors_log():
               "SELECT authors.name, COUNT(log.logArticle) AS views "
               "FROM articles LEFT JOIN log "
               "ON articles.slug = logArticle "
-              "LEFT JOIN authors "
+              "JOIN authors "
               "ON articles.author = authors.id "
               "GROUP BY authors.name "
               "ORDER BY views desc ")
